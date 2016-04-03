@@ -138,6 +138,7 @@ function raiseRoof(){
 
 
 $(document).ready(function(){
+    if($( window ).width() > 996){
     
     if($( window ).width() < 1600){
         globeSize = 700;
@@ -191,7 +192,31 @@ $(document).ready(function(){
     generateStar('.top11');
     generateStar('.top12');
 
-
-    buildBorders();
+buildBorders();
     raiseRoof();
+    
+    } else{
+        $('body').css({
+            'overflow': 'scroll',
+            'backgroundColor': 'white'
+        });
+        
+        $( '.absolute-center' ).css({
+            'position': 'relative',
+            'width': '100%',
+            'height': '100%',
+            'borderRadius': '0',
+            'top': '0',
+            'marginTop': '0' 
+            
+        });
+        $( '.logo' ).css({
+            'marginBottom': '20px',
+            'display': 'inline-block',
+            'width': 'auto'
+                });
+        $( '.absolute-center' ).show( 'slow', function type(){
+    } );
+    }
+    
 });
