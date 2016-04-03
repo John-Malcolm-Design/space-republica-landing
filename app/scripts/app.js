@@ -34,6 +34,16 @@ angular
       });
   });
   
+  var globeSize = 900;
+  var globeBottom = -60;
+  
+  var rocketBottom = 270;
+  var rocketWidth = 200;
+  var rocketLeft = 80;
+  
+  var balloonLeft = 21;
+  var balloonWidth = 200;
+  var balloonBottom = 370; 
   
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
@@ -87,9 +97,9 @@ function buildBorders(){
 
 function raiseBalloon(){
     $( '.balloon' ).animate({    
-    left: ['21%', 'easeOutQuint'],
-    width: ['200px', 'easeOutQuint'],
-    bottom: ['370px', 'easeOutQuint'],
+    left: [balloonLeft+'%', 'easeOutQuint'],
+    width: [balloonWidth+'px', 'easeOutQuint'],
+    bottom: [balloonBottom+'px', 'easeOutQuint'],
   }, 2000, function() {
     $( '.absolute-center' ).show( 'slow', function type(){
         $(function(){
@@ -105,9 +115,9 @@ function raiseBalloon(){
 
 function flyRocket(){
     $( '.rocket' ).animate({
-    width: ['200px', 'easeInQuint'],
-    left: ['80%', 'easeInQuint'],
-    bottom: ['270px', 'easeInQuint'],
+    width: [rocketWidth + 'px', 'easeInQuint'],
+    left: [rocketLeft+'%', 'easeInQuint'],
+    bottom: [rocketBottom +'px', 'easeInQuint'],
   }, 1400, function() {
     raiseBalloon();
   });
@@ -116,10 +126,10 @@ function flyRocket(){
 
 function raiseRoof(){
     $( '.globe' ).animate({
-    width: ['900px', 'easeInQuint'],
+    width: [globeSize, 'easeInQuint'],
     borderWidth: ['15px', 'easeInQuint'],
-    marginLeft: ['-450px', 'easeInQuint'],
-    bottom: ['-60%', 'easeInQuint']
+    marginLeft: ['-' + (globeSize / 2) + 'px', 'easeInQuint'],
+    bottom: [globeBottom+'%', 'easeInQuint']
   }, 1100, function() {
     flyRocket();
   });
@@ -128,6 +138,20 @@ function raiseRoof(){
 
 
 $(document).ready(function(){
+    
+    if($( window ).width() < 1600){
+        globeSize = 700;
+        rocketWidth = 150;
+        rocketBottom = 200;
+        balloonWidth = 170;
+        balloonBottom = 320; 
+    }
+    
+    if($( window ).height() < 900){
+        // globeBottom = -60;
+    }
+    
+    
     console.log('ready');
     generateStar('.top12');
     generateStar('.top1');
