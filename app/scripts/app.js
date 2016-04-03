@@ -40,37 +40,92 @@ function getRandomArbitrary(min, max) {
 }
 
 function generateStar(col){
-    var minWidth = 10;
-    var maxWidth = 50;
     
-    var minTilt = -6;
-    var maxTilt = 18;
-    
-    var width = getRandomArbitrary(minWidth, maxWidth);
-    var delay = getRandomArbitrary(1000, 9000);
-    var delaySmall = getRandomArbitrary(0, 500);
-    var fade = getRandomArbitrary(700, 1400);
-    var posy = (Math.random() * (($(document).height() / 2) - width)).toFixed();
-    var rotation = getRandomArbitrary(minTilt, maxTilt);
-    var img = $('<img class="star">');
-    img.attr('src', 'images/star.svg');
-    img.css({
-        'display' : 'none',
-        'position': 'absolute',
-        'width': width + 'px',
-        'top': posy + 'px',
-        'transform': 'rotate('+rotation+'deg)'
-    });
-    // $(img, img1).appendTo( '.canvas' ).fadeIn(500).delay(1000).fadeOut(500, function(){
-    //   $(this).remove();
-    //   generateStar();
-    // });
-    $(img).appendTo(col).delay(delaySmall).fadeIn(fade).delay(delay).fadeOut(delay, function(){
-    $(this).remove();
-        generateStar(col);
-    });
-    
+    // for(var i = amount; i <= amount; i++){
+        var minWidth = 20;
+        var maxWidth = 70;
+        var minTilt = -6;
+        var maxTilt = 18;
+
+        var width = getRandomArbitrary(minWidth, maxWidth);
+        var delay = getRandomArbitrary(1000, 9000);
+        var delaySmall = getRandomArbitrary(0, 500);
+        var fade = getRandomArbitrary(700, 1400);
+        var posy = (Math.random() * (($(document).height()) - width)).toFixed();
+        var rotation = getRandomArbitrary(minTilt, maxTilt);
+        
+        var img = $('<img class="star">');
+        img.attr('src', 'images/star.svg');
+        img.css({
+            'display' : 'none',
+            'position': 'absolute',
+            'width': width + 'px',
+            'top': posy + 'px',
+            'transform': 'rotate('+rotation+'deg)'
+        });
+        $(img).appendTo(col).delay(delaySmall).fadeIn(fade).delay(delay).fadeOut(delay, function(){
+        $(this).remove();
+            generateStar(col);
+        });
+    // }
+        
 }
+
+function buildBorders(){
+    $( '.topcorner' ).animate({
+    width: ['50%', 'easeInQuint']
+  }, 500, function() {
+    // Animation complete.
+  });
+
+    $( '.bottomcorner' ).animate({
+    width: ['20%', 'easeInQuint']
+  }, 500, function() {
+    // Animation complete.
+  });
+}
+
+function raiseBalloon(){
+    $( '.balloon' ).animate({    
+    left: ['21%', 'easeOutQuint'],
+    width: ['200px', 'easeOutQuint'],
+    bottom: ['370px', 'easeOutQuint'],
+  }, 2000, function() {
+    $( '.absolute-center' ).show( 'slow', function type(){
+        $(function(){
+        $('#newsoon').typed({
+            strings: ['New website coming soon ', 'Sign up below to find out more '],
+            typeSpeed: 0
+        });
+    });
+    } );
+  });
+}
+
+
+function flyRocket(){
+    $( '.rocket' ).animate({
+    width: ['200px', 'easeInQuint'],
+    left: ['80%', 'easeInQuint'],
+    bottom: ['270px', 'easeInQuint'],
+  }, 1400, function() {
+    raiseBalloon();
+  });
+}
+
+
+function raiseRoof(){
+    $( '.globe' ).animate({
+    width: ['900px', 'easeInQuint'],
+    borderWidth: ['15px', 'easeInQuint'],
+    marginLeft: ['-450px', 'easeInQuint'],
+    bottom: ['-60%', 'easeInQuint']
+  }, 1100, function() {
+    flyRocket();
+  });
+}
+
+
 
 $(document).ready(function(){
     console.log('ready');
@@ -99,4 +154,20 @@ $(document).ready(function(){
     generateStar('.top1');
     generateStar('.top12');
 
+    generateStar('.top1');
+    generateStar('.top2');
+    generateStar('.top3');
+    generateStar('.top4');
+    generateStar('.top5');
+    generateStar('.top6');
+    generateStar('.top7');
+    generateStar('.top8');
+    generateStar('.top9');
+    generateStar('.top10');
+    generateStar('.top11');
+    generateStar('.top12');
+
+
+    buildBorders();
+    raiseRoof();
 });
