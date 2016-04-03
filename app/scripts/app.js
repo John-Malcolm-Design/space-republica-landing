@@ -104,7 +104,7 @@ function raiseBalloon(){
     $( '.absolute-center' ).show( 'slow', function type(){
         $(function(){
         $('#newsoon').typed({
-            strings: ['New website coming soon ', 'Sign up below to find out more '],
+            strings: ['New website coming soon ', 'Sign up below to find out more... '],
             typeSpeed: 0
         });
     });
