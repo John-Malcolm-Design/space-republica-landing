@@ -115,10 +115,10 @@ function raiseBalloon(){
 
 function flyRocket(){
     $( '.rocket' ).animate({
-    width: [rocketWidth + 'px', 'easeInQuint'],
-    left: [rocketLeft+'%', 'easeInQuint'],
-    bottom: [rocketBottom +'px', 'easeInQuint'],
-  }, 1400, function() {
+    width: [rocketWidth + 'px', 'swing'],
+    left: [rocketLeft+'%', 'swing'],
+    bottom: [rocketBottom +'px', 'swing'],
+  }, 800, function() {
     raiseBalloon();
   });
 }
