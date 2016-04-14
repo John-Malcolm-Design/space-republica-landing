@@ -95,19 +95,27 @@ body {
     padding: 20px;
     z-index: 9;
     color: black;
-  background: white;
-  width: 500px;
-  height: 320px;
-  position:absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  margin: 0 auto;
-  margin-top: -160px;
+    background: transparent;
+    width: 500px;
+    height: 420px;
+    position:absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin: 0 auto;
+    margin-top: -210px;
 }
 
 #newsoon{
-    display: inline-block;
+    display: inline;
     font-size: 25px;
     margin-bottom: 20px;
+}
+
+#mc_embed_signup_scroll{
+    padding: 20px;
+}
+
+#mc_embed_signup {
+    border-radius: 20px;
 }
